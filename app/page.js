@@ -1,8 +1,9 @@
 import Search from "../app/components/Search";
+import MusicCard from "./components/MusicCard";
 
 async function getTracks() {
   const clientId = process.env.JAMENDO_CLIENT_ID;
-  const url = `https://api.jamendo.com/v3.0/tracks/?client_id=${clientId}&format=jsonpretty&limit=10`;
+  const url = `https://api.jamendo.com/v3.0/tracks/?client_id=${clientId}&format=jsonpretty&limit=12`;
 
   try {
     const response = await fetch(url);
@@ -25,18 +26,8 @@ export default async function Home() {
       <Search />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         {tracks.results.map((track) => (
-          <div key={track.id} className="bg-slate-900 p-4 rounded-lg">
-            <img
-              src={track.image}
-              alt={track.name}
-              className="w-full h-48 object-cover rounded-lg mb-4"
-            />
-            <h2 className="text-xl font-semibold text-white">{track.name}</h2>
-            <p className="text-gray-100">{track.artist_name}</p>
-            <audio controls className="w-full mt-4">
-              <source src={track.audio} type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
+          <div key={track.id}>
+            <MusicCard track={track}></MusicCard>
           </div>
         ))}
       </div>

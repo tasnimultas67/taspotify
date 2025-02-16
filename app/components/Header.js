@@ -16,8 +16,8 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-white">
-      <header className="relative inset-x-0 top-0 z-50">
+    <div className="bg-white relative top-0 left-0">
+      <header className="sticky inset-x-0 top-0 z-50">
         <nav
           aria-label="Global"
           className="flex items-center justify-between p-4 lg:px-8"

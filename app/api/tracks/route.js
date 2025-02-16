@@ -1,6 +1,6 @@
 export async function GET() {
   const clientId = process.env.JAMENDO_CLIENT_ID;
-  const url = `https://api.jamendo.com/v3.0/tracks/?client_id=${clientId}&format=jsonpretty&limit=10`;
+  const url = `https://api.jamendo.com/v3.0/tracks/?client_id=${clientId}&format=jsonpretty&limit=12`;
 
   try {
     const response = await fetch(url);
