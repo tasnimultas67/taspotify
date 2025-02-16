@@ -1,29 +1,27 @@
-import Search from "../app/components/Search";
-
-async function getTracks() {
+async function getSearchResults(query) {
   const clientId = process.env.JAMENDO_CLIENT_ID;
-  const url = `https://api.jamendo.com/v3.0/tracks/?client_id=${clientId}&format=jsonpretty&limit=10`;
+  const url = `https://api.jamendo.com/v3.0/tracks/?client_id=${clientId}&format=jsonpretty&limit=10&search=${query}`;
 
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error("Failed to fetch tracks");
+      throw new Error("Failed to fetch search results");
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error fetching tracks:", error);
+    console.error("Error fetching search results:", error);
     return { results: [] }; // Return an empty array if there's an error
   }
 }
 
-export default async function Home() {
-  const tracks = await getTracks();
+export default async function SearchPage({ searchParams }) {
+  const query = searchParams.q || "";
+  const tracks = await getSearchResults(query);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
-      <h1 className="text-4xl font-bold mb-8">Jamendo Music Player</h1>
-      <Search />
+      <h1 className="text-4xl font-bold mb-8">Search Results for "{query}"</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {tracks.results.map((track) => (
           <div key={track.id} className="bg-gray-800 p-4 rounded-lg">
