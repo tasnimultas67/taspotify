@@ -21,12 +21,12 @@ export default async function Home() {
   const tracks = await getTracks();
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
+    <div className="min-h-screen  text-slate-900 p-8">
       <h1 className="text-4xl font-bold mb-8">Jamendo Music Player</h1>
       <Search />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {tracks.results.map((track) => (
-          <div key={track.id} className="bg-gray-800 p-4 rounded-lg">
+          <div key={track.id} className="bg-white p-4 rounded-lg">
             <img
               src={track.image}
               alt={track.name}
