@@ -22,18 +22,17 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen  text-slate-900 p-8">
-      <h1 className="text-4xl font-bold mb-8">Jamendo Music Player</h1>
       <Search />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         {tracks.results.map((track) => (
-          <div key={track.id} className="bg-white p-4 rounded-lg">
+          <div key={track.id} className="bg-slate-900 p-4 rounded-lg">
             <img
               src={track.image}
               alt={track.name}
               className="w-full h-48 object-cover rounded-lg mb-4"
             />
-            <h2 className="text-xl font-semibold">{track.name}</h2>
-            <p className="text-gray-400">{track.artist_name}</p>
+            <h2 className="text-xl font-semibold text-white">{track.name}</h2>
+            <p className="text-gray-100">{track.artist_name}</p>
             <audio controls className="w-full mt-4">
               <source src={track.audio} type="audio/mpeg" />
               Your browser does not support the audio element.

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { SearchIcon } from "lucide-react";
 
 export default function Search() {
   const [query, setQuery] = useState("");
@@ -15,7 +16,10 @@ export default function Search() {
   };
 
   return (
-    <form onSubmit={handleSearch} className="mb-8">
+    <form
+      onSubmit={handleSearch}
+      className="mb-8 flex items-center justify-start"
+    >
       <input
         type="text"
         value={query}
@@ -27,7 +31,7 @@ export default function Search() {
         type="submit"
         className="ml-2 px-4 py-2 bg-green-500 rounded-lg hover:bg-green-600 transition duration-300"
       >
-        Search
+        <SearchIcon />
       </button>
     </form>
   );
